@@ -1,0 +1,95 @@
+# API_CONTRACT.md
+
+## Endpoints
+
+### POST /notes
+
+| Field         | Type     | Required | Description                |
+|---------------|----------|----------|----------------------------|
+| title         | string   | Yes      | 1-255 chars                |
+| content       | string   | No       | Optional                   |
+
+- **Request Body Schema:**  
+  ```json
+  {
+    "title": "string (required, 1-255 chars)",
+    "content": "string (optional)"
+  }
+  ```
+
+- **Response Schema:**  
+  ```json
+  {
+    "id": 1,
+    "title": "string",
+    "content": "string or null",
+    "created_at": "2024-06-01T12:34:56.789Z"
+  }
+  ```
+
+- **Status Codes:** 201 (Created), 422 (Validation Error)
+- **Auth Required:** No
+
+---
+
+### GET /notes
+
+- **Request Body:** None
+
+- **Response Schema:**  
+  ```json
+  [
+    {
+      "id": 1,
+      "title": "string",
+      "content": "string or null",
+      "created_at": "2024-06-01T12:34:56.789Z"
+    }
+  ]
+  ```
+
+- **Status Codes:** 200 (OK)
+- **Auth Required:** No
+
+---
+
+### GET /notes/{id}
+
+| Path Parameter | Type   | Required |
+|----------------|--------|----------|
+| id             | int    | Yes      |
+
+- **Request Body:** None
+
+- **Response Schema:**  
+  ```json
+  {
+    "id": 1,
+    "title": "string",
+    "content": "string or null",
+    "created_at": "2024-06-01T12:34:56.789Z"
+  }
+  ```
+
+- **Status Codes:** 200 (OK), 404 (Not Found)
+- **Auth Required:** No
+
+---
+
+### DELETE /notes/{id}
+
+| Path Parameter | Type   | Required |
+|----------------|--------|----------|
+| id             | int    | Yes      |
+
+- **Request Body:** None
+
+- **Response Schema:**  
+  ```json
+  {
+    "detail": "Note deleted"
+  }
+  ```
+
+- **Status Codes:** 200 (OK), 404 (Not Found)
+- **Auth Required:** No
