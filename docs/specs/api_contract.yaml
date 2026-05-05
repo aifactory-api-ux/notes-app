@@ -1,0 +1,87 @@
+# API_CONTRACT.md
+
+## Endpoints
+
+---
+
+### POST /notes
+
+| Property         | Value                |
+|------------------|---------------------|
+| HTTP Method      | POST                |
+| Path             | /notes              |
+| Auth Required    | No                  |
+| Request Body     | `NoteCreate`        |
+| Response Body    | `Note`              |
+| Status Codes     | 200                 |
+
+#### Request Body (`NoteCreate`)
+| Field   | Type   | Required | Notes         |
+|---------|--------|----------|--------------|
+| title   | string | Yes      |              |
+| content | string | No       | Optional     |
+
+#### Response Body (`Note`)
+| Field      | Type    | Notes                |
+|------------|---------|----------------------|
+| id         | int     |                      |
+| title      | string  |                      |
+| content    | string  | Optional             |
+| created_at | string  | ISO 8601 timestamp   |
+
+---
+
+### GET /notes
+
+| Property         | Value                |
+|------------------|---------------------|
+| HTTP Method      | GET                 |
+| Path             | /notes              |
+| Auth Required    | No                  |
+| Request Body     | None                |
+| Response Body    | Array of `Note`     |
+| Status Codes     | 200                 |
+
+#### Response Body (Array of `Note`)
+| Field      | Type    | Notes                |
+|------------|---------|----------------------|
+| id         | int     |                      |
+| title      | string  |                      |
+| content    | string  | Optional             |
+| created_at | string  | ISO 8601 timestamp   |
+
+---
+
+### GET /notes/{id}
+
+| Property         | Value                |
+|------------------|---------------------|
+| HTTP Method      | GET                 |
+| Path             | /notes/{id}         |
+| Auth Required    | No                  |
+| Request Body     | None                |
+| Response Body    | `Note`              |
+| Status Codes     | 200                 |
+
+#### Response Body (`Note`)
+| Field      | Type    | Notes                |
+|------------|---------|----------------------|
+| id         | int     |                      |
+| title      | string  |                      |
+| content    | string  | Optional             |
+| created_at | string  | ISO 8601 timestamp   |
+
+---
+
+### DELETE /notes/{id}
+
+| Property         | Value                |
+|------------------|---------------------|
+| HTTP Method      | DELETE              |
+| Path             | /notes/{id}         |
+| Auth Required    | No                  |
+| Request Body     | None                |
+| Response Body    | None                |
+| Status Codes     | 204                 |
+
+---
